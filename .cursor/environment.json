@@ -1,0 +1,11 @@
+{
+  "name": "DARK Rewards",
+  "install": "set -euo pipefail\nroots=()\nfor r in /workspace /agent \"$PWD\"; do [ -d \"$r\" ] && roots+=(\"$r\"); done\nSCRIPT=$(find \"${roots[@]}\" -maxdepth 5 \\( -path '*/node_modules' -o -path '*/.git' \\) -prune -o -type f -path '*/.cursor/install.sh' -print -quit)\n[ -n \"$SCRIPT\" ]\nexec bash \"$SCRIPT\"\n",
+  "start": "set -euo pipefail\nroots=()\nfor r in /workspace /agent \"$PWD\"; do [ -d \"$r\" ] && roots+=(\"$r\"); done\nSCRIPT=$(find \"${roots[@]}\" -maxdepth 5 \\( -path '*/node_modules' -o -path '*/.git' \\) -prune -o -type f -path '*/.cursor/start.sh' -print -quit)\n[ -n \"$SCRIPT\" ]\nexec bash \"$SCRIPT\"\n",
+  "ports": [
+    { "name": "rewards", "port": 4173 },
+    { "name": "rewards-api", "port": 8080 },
+    { "name": "rewards-ui", "port": 3000 },
+    { "name": "darkswap-brand", "port": 3001 }
+  ]
+}
